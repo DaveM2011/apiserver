@@ -1,0 +1,42 @@
+{
+    "admin": {
+        "disabled": false,
+        "listen": "localhost:2020",
+        "enforce_origin": false,
+        "origins": []
+    },
+    "logging": {
+        "logs": {
+            "default": {
+                "level": "error"
+            }
+        }
+    },
+    "apps": {
+        "http": {
+            "servers": {
+                "myserver": {
+                    "listen": [
+                        ":2019"
+                    ],
+                    "experimental_http3": true,
+                    "routes": [
+                        {
+                            "handle": [
+                                {
+                                    "handler": "visitor_ip",
+                                    "output": "stderr"
+                                },
+                                {
+                                    "handler": "file_server",
+                                    "root": ".",
+                                    "index_names": ["index.html"]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
