@@ -1,4 +1,4 @@
-package bookingapi
+package modules
 
 import (
 	"fmt"
